@@ -41,7 +41,7 @@ void dfs(int current_node, int all_rescue_num, int distance)
         }
         return;
     }
-    
+
     if (distance > min_distance)
         return;
 
