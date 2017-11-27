@@ -1,3 +1,7 @@
+/**
+ * 注意该题如果用字符串形式作转换，单个位数可能会超过256，导致结果错误
+ * 故应该使用int格式
+ **/
 #include <iostream>
 #include <cstdio>
 #include <algorithm>
