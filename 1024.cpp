@@ -17,6 +17,7 @@ struct BigInt
     }
 };
 
+// 如果从vector的头尾向中间依次比较，复杂度更小
 bool palindromic(BigInt &num)
 {
     vector<int> num2 = num.num;
