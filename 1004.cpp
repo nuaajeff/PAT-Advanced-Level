@@ -1,3 +1,9 @@
+/**
+ * 该实现方法有两个测试点过不了
+ * 分析原因，应该是因为输入没有保证顺序，即输入的ID不一定是已经存在父节点的
+ * 有可能先输入子节点，才输入父节点
+ * 如果想用动态数组实现需要参考刘汝佳白书
+ * */
 #include <iostream>
 #include <cstdio>
 #include <string>
@@ -7,8 +13,7 @@ using namespace std;
 
 struct TreeNode
 {
-    string label;
-    TreeNode* parent;
+    int label;
     vector<TreeNode*> children;
 };
 
@@ -17,17 +22,11 @@ vector<int> ans;
 void dfs(TreeNode* curr, int level)
 {
     if (level+1 > ans.size())
-    {
         ans.push_back(0);
-    }
     if (curr->children.size() == 0)
-    {
         ans[level]++;
-    }
     for (int i = 0; i < curr->children.size(); i++)
-    {
         dfs(curr->children[i], level+1);
-    }
 }
 
 void first_order(TreeNode* tree)
@@ -39,7 +38,7 @@ void first_order(TreeNode* tree)
     }
 }
 
-void find_by_id(TreeNode* tree, string id, TreeNode* &curr)
+void find_by_id(TreeNode* tree, int id, TreeNode* &curr)
 {
     if (tree->label == id)
     {
@@ -60,11 +59,11 @@ int main()
     int non_leaf_nodes_num = 0;
     cin >> nodes_num >> non_leaf_nodes_num;
     TreeNode* tree = new TreeNode;
-    tree->label = "01";
+    tree->label = 1;
     TreeNode* current = tree;
     for (int i = 0; i < non_leaf_nodes_num; i++)
     {
-        string id;
+        int id;
         int k;
         cin >> id >> k;
         //cout << "id: " << id << endl;
@@ -72,7 +71,7 @@ int main()
         //cout << "Current: " << current->label << endl;
         for (int j = 0; j < k; j++)
         {
-            string cid;
+            int cid;
             cin >> cid;
             TreeNode* child = new TreeNode;
             child->label = cid;
