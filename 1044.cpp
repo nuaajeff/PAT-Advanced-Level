@@ -51,7 +51,6 @@ int main() {
         }
         else if (j <= n && sum_i[j] - sum_i[i-1] < nearm) {
             nearm = sum_i[j] - sum_i[i-1];
-            cout << "nearm: " << nearm << endl; 
         }
     }
     for (int i = 1; i <= n; i++) {
